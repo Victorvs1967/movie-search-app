@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Movie from './components/Movie';
 import Loader from './components/Loader';
 
-import { API_SEARCH } from './Const';
+import { API_DETAILS_URL, API_KEY, API_PARAMS, API_SEARCH_URL } from './Const';
 import { reducer, initialState } from './reducer';
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
       type: 'SEARCH_MOVIES_REQUEST'
     });
 
-    fetch(`${API_SEARCH}${search}`)
+    fetch(`${API_SEARCH_URL}${search}`)
     .then(response => response.json())
     .then(result => dispatch({
       type: 'SEARCH_MOVIES_SUCCESS',
@@ -29,7 +29,25 @@ const App = () => {
     }))
   };
 
-  useEffect(() => fetchMovies('indiana'), [])
+  const fetchPopular = () => {
+
+    dispatch({
+      type: 'SEARCH_MOVIES_REQUEST'
+    });
+
+    fetch(`${API_DETAILS_URL}popular?${API_KEY}&${API_PARAMS}`)
+    .then(response => response.json())
+    .then(result => dispatch({
+      type: 'SEARCH_MOVIES_SUCCESS',
+      payload: result.results
+    }))
+    .catch(error => dispatch({
+      type: 'SEARCH_MOVIES_FAILURE',
+      error: error
+    }))
+  };
+
+  useEffect(() => fetchPopular(), [])
 
   const { movies, errorMessage, loading } = state;
 
@@ -37,6 +55,7 @@ const App = () => {
     <div className="container px-0 pt-5">
       <Header 
         fetchMovies={fetchMovies}
+        fetchPopular={fetchPopular}
       />
       <h2 className="text-center my-5">Movies List</h2>
       {loading && !errorMessage ?

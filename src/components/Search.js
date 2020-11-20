@@ -1,11 +1,8 @@
-import React, { useReducer, useState } from 'react'
-
-import { initialState, reducer } from '../reducer';
+import React, { useState } from 'react'
 
 const Search = ({ fetchMovies }) => {
 
     const [ search, setSearch ] = useState('');
-    // const [ state, dispatch ] = useReducer(reducer, initialState);
 
     const handleSearchChange = event => setSearch(event.target.value);
 

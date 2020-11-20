@@ -1,10 +1,10 @@
 import Search from './Search';
 
-const Header = ({ fetchMovies }) => {
+const Header = ({ fetchMovies, fetchPopular }) => {
 
     const handleToHome = event => {
         event.preventDefault();
-        fetchMovies('indiana');
+        fetchPopular();
     }
 
     return (

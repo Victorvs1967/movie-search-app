@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { API_DETAILS, API_KEY, API_PARAMS, API_IMG, DEFAULT_PLACEHOLDER_IMAGE } from '../Const';
+import { API_DETAILS_URL, API_KEY, API_PARAMS, API_IMG_URL, DEFAULT_PLACEHOLDER_IMAGE } from '../Const';
 import MovieDetails from './MovieDetails';
 
 const Movie = ({ movie }) => {
@@ -9,10 +9,10 @@ const Movie = ({ movie }) => {
     const [ movieDetails, setMovieDetails ] = useState([]);
 
     const { poster_path, id, title, release_date } = movie;
-    const poster = poster_path === null ? DEFAULT_PLACEHOLDER_IMAGE : `${API_IMG}${poster_path}`;
+    const poster = poster_path === null ? DEFAULT_PLACEHOLDER_IMAGE : `${API_IMG_URL}${poster_path}`;
     
     const getDetails = movie_id => {
-        fetch(`${API_DETAILS}${movie_id}?${API_KEY}${API_PARAMS}`)
+        fetch(`${API_DETAILS_URL}${movie_id}?${API_KEY}${API_PARAMS}`)
         .then(response => response.json())
         .then(result => setMovieDetails(result))
         .catch(error => console.log('Fetch error: ', error))

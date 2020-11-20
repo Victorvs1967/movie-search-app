@@ -2,7 +2,6 @@ export const initialState = {
     loading: true,
     movies: [],
     errorMessage: null,
-    search: ''
 };
 
 export const reducer = (state, action) => {
@@ -25,11 +24,6 @@ export const reducer = (state, action) => {
                 loading: true,
                 errorMessage: action.error
             };
-        case 'SEARCH_STRING_SET':
-            return {
-                ...state,
-                search: action.payload
-            }
         default:
             return state;
     }
