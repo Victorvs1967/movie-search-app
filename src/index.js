@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
+import 'jquery/dist/jquery.min.js';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
