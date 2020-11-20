@@ -1,6 +1,8 @@
 export const API_BASE_URL = 'https://api.themoviedb.org/3/';
 export const API_SEARCH_URL = 'https://api.themoviedb.org/3/search/movie?api_key=565bffc33a642464d643ce0ca8704d54&language=ru-RU&sort_by=popularity.desc&query=';
+export const API_SEARCH_TV_URL = 'https://api.themoviedb.org/3/search/tv?api_key=565bffc33a642464d643ce0ca8704d54&language=ru-RU&sort_by=popularity.desc&query=';
 export const API_DETAILS_URL = 'https://api.themoviedb.org/3/movie/';
+export const API_DETAILS_TV_URL = 'https://api.themoviedb.org/3/tv/';
 export const API_PARAMS = '&language=ru-RU&sort_by=popularity.desc';
 export const API_KEY = 'api_key=565bffc33a642464d643ce0ca8704d54';
 

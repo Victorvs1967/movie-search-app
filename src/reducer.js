@@ -5,6 +5,7 @@ export const initialState = {
     showDetails: false,
     movieDetails: [],
     search: '',
+    tv: false
 };
 
 export const reducer = (state, action) => {

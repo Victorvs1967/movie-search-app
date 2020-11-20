@@ -1,10 +1,15 @@
 import Search from './Search';
 
-const Header = ({ fetchMovies, fetchPopular }) => {
+const Header = ({ fetchMovies, fetchPopular, fetchPopularTV }) => {
 
     const handleToHome = event => {
         event.preventDefault();
         fetchPopular();
+    }
+
+    const handleToTv = event => {
+        event.preventDefault();
+        fetchPopularTV();
     }
 
     return (
@@ -20,7 +25,7 @@ const Header = ({ fetchMovies, fetchPopular }) => {
                     <a href="#link" className="nav-link" onClick={handleToHome}>Movies</a>
                 </li>
                 <li className="nav-item">
-                    <a href="#link" className="nav-link" onClick={handleToHome}>TV Shows</a>
+                    <a href="#link" className="nav-link" onClick={handleToTv}>TV Shows</a>
                 </li>
             </ul>
             <Search fetchMovies={fetchMovies} />
