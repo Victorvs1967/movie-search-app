@@ -14,7 +14,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "deploy": "npm run build && cp build/index.html build/200.html && surge build movie-search-app.surge.sh",
+    "deploy": "npm run build && cp build/index.html build/200.html && surge build movie-react-app.surge.sh",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
