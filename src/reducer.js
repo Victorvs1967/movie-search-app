@@ -2,6 +2,9 @@ export const initialState = {
     loading: true,
     movies: [],
     errorMessage: null,
+    showDetails: false,
+    movieDetails: [],
+    search: '',
 };
 
 export const reducer = (state, action) => {
@@ -23,6 +26,29 @@ export const reducer = (state, action) => {
                 ...state,
                 loading: true,
                 errorMessage: action.error
+            };        
+        case 'MOVIE_DETAILS_REQUEST':
+            return {
+                ...state,
+                showDetails: false,
+                errorMessage: null
+            };
+        case 'MOVIE_DETAILS_SUCCESS':
+            return {
+                ...state,
+                showDetails: true,
+                movieDetails: action.payload
+            };
+        case 'MOVIE_DETAILS_FAILURE':
+            return {
+                ...state,
+                showDetails: false,
+                errorMessage: action.error
+            };
+        case 'MOVIES_SEARCH_SET':
+            return {
+                ...state,
+                search: action.payload
             };
         default:
             return state;

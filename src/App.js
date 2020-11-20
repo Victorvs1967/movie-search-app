@@ -12,7 +12,6 @@ const App = () => {
   const [ state, dispatch ] = useReducer(reducer, initialState);
 
   const fetchMovies = search => {
-
     dispatch({
       type: 'SEARCH_MOVIES_REQUEST'
     });
@@ -30,7 +29,6 @@ const App = () => {
   };
 
   const fetchPopular = () => {
-
     dispatch({
       type: 'SEARCH_MOVIES_REQUEST'
     });

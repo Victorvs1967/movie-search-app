@@ -1,10 +1,17 @@
-import React, { useState } from 'react'
+import React, { useReducer } from 'react';
+
+import { reducer, initialState } from '../reducer';
 
 const Search = ({ fetchMovies }) => {
 
-    const [ search, setSearch ] = useState('');
+    const [ state, dispatch ] = useReducer(reducer, initialState);
+    const { search } = state;
 
-    const handleSearchChange = event => setSearch(event.target.value);
+    const handleSearchChange = event => dispatch({
+            type: 'MOVIES_SEARCH_SET',
+            payload: event.target.value
+        }
+    );
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -13,13 +20,13 @@ const Search = ({ fetchMovies }) => {
     }  
     
     return (
-    <form className="form-inline" onSubmit={handleSubmit}>
-        <div className="form-group">
-            <input type="text" name="search" placeholder="Search movie" className="form-control"  onChange={handleSearchChange} />
-            <button type="submit" className="btn btn-primary ml-2"><i className="fa fa-search" aria-hidden="true"></i></button>
-        </div>
-    </form>
-);
+        <form className="form-inline" onSubmit={handleSubmit}>
+            <div className="form-group">
+                <input type="text" name="search" placeholder="Search movie" className="form-control"  onChange={handleSearchChange} />
+                <button type="submit" className="btn btn-primary ml-2"><i className="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+        </form>
+    );
 }
 
 export default Search;
