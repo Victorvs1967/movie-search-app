@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect } from 'react';
-
+import { BrowserRouter } from 'react-router-dom';
 import Header from "./components/Header";
 import Movie from './components/Movie';
 import Loader from './components/Loader';
@@ -67,22 +67,24 @@ const App = () => {
   const { movies, errorMessage, loading } = state;
 
   return (
-    <div className="container px-0 pt-5">
-      <Header 
-        fetchMovies={fetchMovies}
-        fetchPopular={fetchPopular}
-        fetchPopularTV={fetchPopularTV}
-      />
-      <h2 className="text-center my-5">Movies List</h2>
-      {loading && !errorMessage ?
-        <div className="row justify-content-center mt-5"><Loader /></div> :
-        <div className="card-deck row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
-          {errorMessage ?
-          <h2 style={{textAlign: 'center', margin: 'auto', color: 'red'}}>Fetch error: {errorMessage}</h2> :
-          movies.map(movie => <Movie movie={movie}  key={movie.id} />)}
-        </div>
-      }
-    </div>
+    <BrowserRouter>
+      <div className="container px-0 pt-5">
+        <Header 
+          fetchMovies={fetchMovies}
+          fetchPopular={fetchPopular}
+          fetchPopularTV={fetchPopularTV}
+        />
+        <h2 className="text-center my-5">Movies List</h2>
+        {loading && !errorMessage ?
+          <div className="row justify-content-center mt-5"><Loader /></div> :
+          <div className="card-deck row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+            {errorMessage ?
+            <h2 style={{textAlign: 'center', margin: 'auto', color: 'red'}}>Fetch error: {errorMessage}</h2> :
+            movies.map(movie => <Movie movie={movie}  key={movie.id} />)}
+          </div>
+        }
+      </div>
+    </BrowserRouter>
   );
 }
 
